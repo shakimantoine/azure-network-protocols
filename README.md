@@ -6,9 +6,7 @@
 In this tutorial, we observe various network traffic to and from Azure Virtual Machines with Wireshark as well as experiment with Network Security Groups. <br />
 
 
-<h2>Video Demonstration</h2>
 
-- ### [YouTube: Azure Virtual Machines, Wireshark, and Network Security Groups](https://www.youtube.com)
 
 <h2>Environments and Technologies Used</h2>
 
@@ -25,10 +23,12 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 
 <h2>High-Level Steps</h2>
 
-- Step 1
-- Step 2
-- Step 3
-- Step 4
+1. VM Setup
+
+2. ICMP Traffic
+
+3. Firewall & Protocols (SSH, DHCP, DNS, RDP)
+
 
 <h2>Actions and Observations</h2>
 
@@ -36,7 +36,26 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Step 1 – Create Virtual Machines (Part 1)
+
+Go to Azure Portal
+.
+
+Create a Resource Group.
+
+Create a Windows 10 VM:
+
+Select the previously created Resource Group.
+
+Allow it to create a new Virtual Network (VNet) and Subnet.
+
+Create a Linux (Ubuntu) VM:
+
+Use the same Resource Group and Virtual Network (must be the same VNet).
+
+Authentication type: Username/Password.
+
+Confirm both VMs are in the same VNet/Subnet.
 </p>
 <br />
 
@@ -44,7 +63,27 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Step 2 – Observe ICMP Traffic (Part 2)
+
+If using Mac, install Microsoft Remote Desktop.
+
+Use RDP to connect to the Windows 10 VM.
+
+Inside Windows 10 VM:
+
+Install Wireshark.
+
+Start a packet capture.
+
+Filter for ICMP traffic only.
+
+Get the private IP address of the Ubuntu VM.
+
+From Windows 10 VM:
+
+Ping the Ubuntu VM → Observe requests & replies in Wireshark.
+
+Ping a public website (e.g., www.google.com) → Observe ICMP traffic in Wireshark.
 </p>
 <br />
 
@@ -52,6 +91,59 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Step 3 – Configure Firewall & Observe Other Protocols (Part 3)
+🔹 ICMP (Firewall Behavior)
+
+Start a continuous ping from Windows 10 VM → Ubuntu VM.
+
+In Azure → open Ubuntu VM’s Network Security Group (NSG).
+
+Disable inbound ICMP.
+
+Observe failed pings in Wireshark/command line.
+
+Re-enable ICMP → Observe ping success resuming.
+
+Stop ping activity.
+
+🔹 SSH Traffic
+
+In Wireshark → start new capture & filter for SSH.
+
+From Windows 10 VM → SSH into Ubuntu VM:
+
+ssh labuser@<private IP>
+
+Enter credentials, type commands, observe SSH packets in Wireshark.
+
+Exit SSH with exit.
+
+🔹 DHCP Traffic
+
+In Wireshark → filter for DHCP.
+
+From Windows 10 VM (PowerShell as Admin):
+
+Run ipconfig /renew.
+
+Observe DHCP traffic in Wireshark.
+
+🔹 DNS Traffic
+
+In Wireshark → filter for DNS.
+
+From Windows 10 VM (cmd/PowerShell):
+
+Run nslookup google.com and nslookup disney.com.
+
+Observe DNS traffic in Wireshark.
+
+🔹 RDP Traffic
+
+In Wireshark → filter for RDP (tcp.port == 3389).
+
+Observe nonstop RDP traffic.
+
+Reason: RDP streams the full session continuously, not just user activity.
 </p>
 <br />
