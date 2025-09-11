@@ -33,7 +33,8 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <h2>Actions and Observations</h2>
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="1880" height="1538" alt="image" src="https://github.com/user-attachments/assets/f18d034d-d90a-4e96-9609-a27366061d38" />
+
 </p>
 <p>
 Step 1 – Create Virtual Machines (Part 1)
@@ -60,7 +61,8 @@ Confirm both VMs are in the same VNet/Subnet.
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="2988" height="1806" alt="image" src="https://github.com/user-attachments/assets/b94cb5fb-5604-42da-969e-c588ed7fb097" />
+
 </p>
 <p>
 Step 2 – Observe ICMP Traffic (Part 2)
@@ -88,7 +90,18 @@ Ping a public website (e.g., www.google.com) → Observe ICMP traffic in Wiresha
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="2988" height="1806" alt="image" src="https://github.com/user-attachments/assets/e5bef5b7-d2c0-4b99-a5c9-dfaada3e1f02" />
+<img width="2988" height="1806" alt="image" src="https://github.com/user-attachments/assets/03d893dc-fb5b-4f66-bcdb-a7dcd4a522d3" />
+ <img width="2988" height="1806" alt="image" src="https://github.com/user-attachments/assets/cf083571-5356-4fa3-a1d6-59b95ec95551" />
+ <img width="2988" height="1806" alt="image" src="https://github.com/user-attachments/assets/f2fca8cc-c26f-46fa-9a00-81658224861d" />
+ <img width="2988" height="1806" alt="image" src="https://github.com/user-attachments/assets/1d7efdae-0e17-4b55-9a74-a1595e70a053" />
+ <img width="2988" height="1806" alt="image" src="https://github.com/user-attachments/assets/f1cffd57-4d5f-46d9-be5b-5477171eb437" />
+
+
+
+
+
+
 </p>
 <p>
 Step 3 – Configure Firewall & Observe Other Protocols (Part 3)
